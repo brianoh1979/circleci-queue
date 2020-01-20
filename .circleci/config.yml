@@ -52,7 +52,6 @@ jobs:
       - run:
           name: Publish Dev
           command: |
-            PUBLISH_MESSAGE=`circleci orb publish packed.yml brianoh1979/<<pipeline.parameters.orbname>>@dev:${PR_NUMBER} --token ${CIRCLECI_API_KEY}`
             ORB_VERSION=$(echo $PUBLISH_MESSAGE | sed -n 's/Orb `\(.*\)` was published.*/\1/p')
             echo "export ORB_VERSION=\"${ORB_VERSION}\"" >> $BASH_ENV
             echo $ORB_VERSION
